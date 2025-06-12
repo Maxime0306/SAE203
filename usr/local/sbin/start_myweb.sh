@@ -12,4 +12,4 @@ fi
 
 nohup java -cp "$JAR_PATH" HttpServer "$CONF_PATH" > "$LOG_PATH" 2>&1 &
 echo "Serveur lancé avec PID $!"
-echo $! > /tmp/var/run/myweb/myweb.pid
+echo $! > C:\Users\maxim\tmp\ari\var\run\myweb\myweb.pid
