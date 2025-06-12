@@ -17,7 +17,7 @@ public class HttpServer {
             System.out.println("Serveur lancé sur le port " + port);
 
             // Enregistrer le PID
-            try (FileWriter fw = new FileWriter("var/run/myweb/myweb.pid")) {
+            try (FileWriter fw = new FileWriter("/var/run/myweb/myweb.pid")) {
                 fw.write(String.valueOf(ProcessHandle.current().pid()));
             }
 
