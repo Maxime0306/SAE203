@@ -10,7 +10,7 @@ public class HttpServer {
     public static void main(String[] args) {
         try {
             // Charger la config depuis myweb.conf
-            Config config = new Config("etc/myweb/myweb.conf");
+            Config config = new Config("/etc/myweb/myweb.conf");
             int port = config.getPort();
             String root = config.getDocumentRoot();
             ServerSocket serverSocket = new ServerSocket(port);
