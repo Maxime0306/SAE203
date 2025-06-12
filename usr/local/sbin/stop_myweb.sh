@@ -2,7 +2,7 @@
 
 # Fichier : stop_myweb.sh
 
-PID_FILE="C:\Users\maxim\tmp\ari\var\run\myweb\myweb.pid"
+PID_FILE="var\run\myweb\myweb.pid"
 
 if [ -f "$PID_FILE" ]; then
     PID=$(cat $PID_FILE)

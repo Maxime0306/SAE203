@@ -10,14 +10,14 @@ public class HttpServer {
     public static void main(String[] args) {
         try {
             // Charger la config depuis myweb.conf
-            Config config = new Config("C:\\Users\\maxim\\tmp\\ari\\etc\\myweb\\myweb.conf");
+            Config config = new Config("etc/myweb/myweb.conf");
             int port = config.getPort();
             String root = config.getDocumentRoot();
             ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Serveur lancé sur le port " + port);
 
             // Enregistrer le PID
-            try (FileWriter fw = new FileWriter("C:\\Users\\maxim\\tmp\\ari\\var\\run\\myweb\\myweb.pid")) {
+            try (FileWriter fw = new FileWriter("var/run/myweb/myweb.pid")) {
                 fw.write(String.valueOf(ProcessHandle.current().pid()));
             }
 

@@ -8,8 +8,8 @@ import org.w3c.dom.*;
 public class Config {
     private int port = 80;
     private String documentRoot = ".";
-    private String accessLog = "/tmp/access.log";
-    private String errorLog = "/tmp/error.log";
+    private String accessLog = "tmp/access.log";
+    private String errorLog = "tmp/error.log";
     private SecurityManager security;
     private java.util.Map<String, Boolean> indexDirs = new java.util.HashMap<>();
 

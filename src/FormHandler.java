@@ -6,7 +6,7 @@ import java.util.*;
 
 public class FormHandler {
 
-    private static final File dataFile = new File("C:\\Users\\maxim\\tmp\\ari\\usr\\local\\lib\\myweb\\data.txt");
+    private static final File dataFile = new File("usr/local/lib/myweb/data.txt");
 
     public static void handleForm(String method, String path, BufferedReader in, OutputStream out) throws IOException {
         Map<String, String> params = new HashMap<>();
