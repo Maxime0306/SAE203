@@ -8,7 +8,6 @@ LOG_PATH="C:\Users\maxim\tmp\ari\myweb_access.log"
 
 if [ ! -f "$JAR_PATH" ]; then
     echo "Erreur : fichier $JAR_PATH introuvable"
-    exit 1
 fi
 
 nohup java -cp "$JAR_PATH" HttpServer "$CONF_PATH" > "$LOG_PATH" 2>&1 &
