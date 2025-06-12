@@ -5,6 +5,10 @@ import java.lang.management.ManagementFactory;
 
 public class StatusHandler {
 
+    /**
+     * Retourne un message contenant l'état du serveur.
+     * @return Le message contenant l'état du serveur.
+     */
     public static String getStatus() {
         StringBuilder sb = new StringBuilder();
         sb.append("État du serveur:\n");

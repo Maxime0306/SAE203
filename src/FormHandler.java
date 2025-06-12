@@ -59,6 +59,12 @@ public class FormHandler {
         }
     }
 
+    /**
+     * Parse une chaîne de requête et stocke les paramètres dans un dictionnaire.
+     * @param query La chaîne de requête à parser.
+     * @param params Le dictionnaire dans lequel stocker les paramètres.
+     * @throws UnsupportedEncodingException
+     */
     private static void parseQuery(String query, Map<String, String> params) throws UnsupportedEncodingException {
         for (String pair : query.split("&")) {
             String[] kv = pair.split("=");
@@ -68,6 +74,12 @@ public class FormHandler {
         }
     }
 
+    /**
+     * Envoie une page HTML.
+     * @param out Le flux d'écriture vers le client.
+     * @param content Le contenu de la page HTML.
+     * @throws IOException
+     */
     private static void sendHtml(OutputStream out, String content) throws IOException {
         PrintWriter writer = new PrintWriter(out);
         writer.print("HTTP/1.1 200 OK\r\n");

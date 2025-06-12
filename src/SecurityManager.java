@@ -11,6 +11,10 @@ public class SecurityManager {
 
     public SecurityManager() {}
 
+    /**
+     * Constructeur de la classe SecurityManager.
+     * @param securityElement L'élément <security> du fichier de configuration.
+     */
     public SecurityManager(Element securityElement) {
         NodeList children = securityElement.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
@@ -35,6 +39,11 @@ public class SecurityManager {
         }
     }
 
+    /**
+     * Retourne vrai si l'IP est autorisée ou non.
+     * @param ip L'IP à vérifier.
+     * @return Vrai si l'IP est autorisée ou non.'
+     */
     public boolean isAllowed(String ip) {
         if (acceptFirst) {
             if (matches(ip, accepts)) return true;
@@ -46,6 +55,12 @@ public class SecurityManager {
         return defaultPolicy.equals("accept");
     }
 
+    /**
+     * Vérifie si une IP est dans une liste de règles.
+     * @param ip L'IP à vérifier.
+     * @param rules La liste de règles.
+     * @return
+     */
     private boolean matches(String ip, List<String> rules) {
         for (String rule : rules) {
             if (rule.contains("/")) {
@@ -60,6 +75,13 @@ public class SecurityManager {
         return false;
     }
 
+    /**
+     * Vérifie si une IP est dans le même sous-réseau que une autre.
+     * @param ip1 L'IP à vérifier.
+     * @param ip2 L'IP de base.
+     * @param mask La masque de sous-réseau.
+     * @return Vrai si les deux IP sont dans le même sous-réseau.
+     */
     private boolean inSameSubnet(String ip1, String ip2, int mask) {
         String[] a1 = ip1.split("\\.");
         String[] a2 = ip2.split("\\.");

@@ -53,6 +53,12 @@ public class Config {
         }
     }
 
+    /**
+     * Retourne la valeur d'un tag sous forme de String.
+     * @param tag Le nom du tag.
+     * @param e L'élément contenant le tag.'
+     * @return La valeur du tag sous forme de String.
+     */
     private String getTagValue(String tag, Element e) {
         NodeList nodes = e.getElementsByTagName(tag);
         if (nodes.getLength() > 0) {
@@ -67,6 +73,11 @@ public class Config {
     public String getErrorLog() { return errorLog; }
     public SecurityManager getSecurityManager() { return security; }
 
+    /**
+     * Retourne vrai si l'indexation des dossiers est activée pour le chemin spécifié.
+     * @param path Le chemin du dossier.
+     * @return Vrai si l'indexation des dossiers est activée pour le chemin spécifié.'
+     */
     public boolean isDirectoryIndexEnabled(String path) {
         return indexDirs.getOrDefault(path, false);
     }

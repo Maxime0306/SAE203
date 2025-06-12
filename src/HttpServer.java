@@ -32,9 +32,11 @@ public class HttpServer {
 
     public static void handleClient(Socket socket, Config config, String root) {
         try (
+                // Lire et écrire sur le socket
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 OutputStream out = socket.getOutputStream()
         ) {
+            // Lire la première ligne du request
             String requestLine = in.readLine();
             if (requestLine == null) return;
             StringTokenizer tokenizer = new StringTokenizer(requestLine);
@@ -42,6 +44,7 @@ public class HttpServer {
             String path = tokenizer.nextToken();
 
             String ip = socket.getInetAddress().getHostAddress();
+            // Vérifier laccès au fichier
             if (!config.getSecurityManager().isAllowed(ip)) {
                 Logger.logAccess(config.getAccessLog(), ip + " REJECTED " + path);
                 sendResponse(out, 403, "Accès refusé", "text/plain");
@@ -102,6 +105,14 @@ public class HttpServer {
         }
     }
 
+    /**
+     * Envoie une réponse HTTP.
+     * @param out Le flux d'écriture vers le client.
+     * @param code Le code de la réponse.
+     * @param body Le corps de la réponse.
+     * @param contentType Le type du corps de la réponse.
+     * @throws IOException
+     */
     public static void sendResponse(OutputStream out, int code, String body, String contentType) throws IOException {
         PrintWriter writer = new PrintWriter(out);
         writer.print("HTTP/1.1 " + code + " OK\r\n");
@@ -112,6 +123,12 @@ public class HttpServer {
         writer.flush();
     }
 
+    /**
+     * Envoie une réponse HTTP avec une liste de fichiers dans le répertoire.
+     * @param dir Le répertoire.
+     * @param out Le flux d'écriture vers le client.
+     * @throws IOException
+     */
     public static void sendDirectoryListing(File dir, OutputStream out) throws IOException {
         StringBuilder html = new StringBuilder("<html><body><h1>Index of " + dir.getName() + "</h1><ul>");
         for (File file : dir.listFiles()) {
