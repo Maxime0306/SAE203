@@ -2,9 +2,9 @@
 
 # Fichier : start_myweb.sh
 
-JAR_PATH="/tmp/usr/local/lib/myweb/server.jar"
-CONF_PATH="/tmp/etc/myweb/myweb.conf"
-LOG_PATH="/tmp/var/run/myweb/myweb.log"
+JAR_PATH="C:\Users\maxim\tmp\ari\var\run\myweb\server.jar"
+CONF_PATH="C:\Users\maxim\tmp\ari\etc\myweb\myweb.conf"
+LOG_PATH="C:\Users\maxim\tmp\ari\myweb_access.log"
 
 if [ ! -f "$JAR_PATH" ]; then
     echo "Erreur : fichier $JAR_PATH introuvable"
